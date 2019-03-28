@@ -1,0 +1,5 @@
+gauge file_storage by fileshare
+
+/Size of Directory (?P<directory>[^\s]+) at (?P<date>\w+\s+\w+\s+\d+\s+\d+:\d+:\d+\s+\w+\s+\d+) is  (?P<sizeInMb>\d+)/ {
+file_storage[$1] = $3
+    }

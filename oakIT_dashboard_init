@@ -1,0 +1,42 @@
+#!/bin/bash
+# chkconfig: 2345 20 80
+# description: Shell script to start all monitoring scripts during startup
+
+# Source function library.
+. /etc/init.d/functions
+
+start() {
+echo "1"
+#su developer /home/developer/Desktop/bash_scripts/aws_login.sh
+#su developer /home/developer/Desktop/bash_scripts/aws_start_cloudExporter.sh
+su developer /home/developer/Desktop/bash_scripts/aws_start_mtail.sh
+su developer /home/developer/Desktop/bash_scripts/aws_start_prometheus.sh
+#su developer /home/developer/Desktop/bash_scripts/aws_start_alertManager.sh
+
+
+}
+
+stop() {
+echo "2"
+}
+
+case "$1" in 
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       stop
+       start
+       ;;
+    status)
+       # code to check status of app comes here 
+       # example: status program_name
+       ;;
+    *)
+       echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0 
